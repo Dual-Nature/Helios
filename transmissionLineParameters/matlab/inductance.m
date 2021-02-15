@@ -44,6 +44,7 @@ function l = calcInductance(d,r)
     GMR = 0.7788*r;
     % inductance
     l = (meu/(2*pi))*log(d/GMR);
+    disp('Value of Inductance -')
     disp(l)
     % graph
     disp('If you want to plot the graph, then enter the max-limit of distance')
