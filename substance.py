@@ -1,6 +1,8 @@
 # This class only poses electromagnetic properties of substance
 # A substance is a matter that has definite properties and composition
 
+# not used now
+
 # default properties
 permittivity = 8.854 * 10**(-12) # F/m
 permeability = 1.257 * 10**(-6) # H/m

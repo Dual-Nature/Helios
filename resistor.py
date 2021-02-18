@@ -1,19 +1,22 @@
 import numpy as np
+import matplotlib.pyplot as plt
 from lumpedElement import LumpedElement
 
 class Resistor(LumpedElement):
     def __init__(self,resistance):
-        LumpedElement.__init__(2)
+        super().__init__(2)
         self.resistance = resistance
 
-    def getPotentialDiff(self,i,inverse = False):
-        self.current = np.array([[0,i],[-i,0]])
-        self.potentialDiff = self.current(-self.resistance)
-        if inverse:
-            return self.potentialDiff[1][0]
-        else:
-            return self.potentialDiff[0][1]
+    def setPotentialDiff(self, value, t1, t2):
+        super().setPotentialDiff(value=value, t1=t1, t2=t2)
+    
+    def setCurrent(self, value, t1, t2):
+        super().setCurrent(value=value, t1=t1, t2=t2)
+    
+    def getPotentialDiff(self, t1, t2):
+        self.potentialDiff = self.current*(-1*self.resistance)
+        
+        
 
-    def getCurrent(self,v,t1 = 'a',t2 = 'b'):
-        self.potentialDiff = np.array([[0,v],[-v,0]])
-        self.current = self.potentialDiff/self.resistance
+r = Resistor(3)
+print(r.getPotentialDiff())
